@@ -3,7 +3,8 @@ import requests
 import json
 import time
 from random import choice
-
+import os
+import logging
 
 def init():
     """
@@ -12,9 +13,9 @@ def init():
     """
     # generate session 对象
     s = requests.Session()
-    dic = {"bili_jct": "97f897c8b4e300f2e8c8473fa6659a17",
-           "SESSDATA": "f2329c8c%2C1618295902%2Ccfd0e*a1",
-           "DedeUserID": "6089090"}
+    dic = {"bili_jct": os.environ["BILI_JCT"],
+           "SESSDATA": os.environ["SESSDATA"],
+           "DedeUserID": os.environ["DEDEUSERID"]}
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/85.0.4183.121 Safari/537.36",
@@ -35,8 +36,8 @@ def getVideoList(s):
     """
     videolist = []
     r = s.get(
-        "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=6089090&type_list=8,512,4097,4098,"
-        "4099,4100,4101").json()
+        "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid={}&type_list=8,512,4097,4098,"
+        "4099,4100,4101".format(os.environ["DEDEUSERID"])).json()
     for dyn in r["data"]["cards"]:
         card = json.loads(dyn["card"])
         videolist.append(card["aid"])
@@ -73,6 +74,7 @@ if __name__ == '__main__':
     s, api = init()
     coins = 5
     videolist = getVideoList(s)
+    logging.info("获取到videolist{}".format(videolist))
     while coins > 0:
         time.sleep(0.5)
         aid = choice(videolist)
@@ -81,11 +83,9 @@ if __name__ == '__main__':
             # 投币
             if deliveiedCoin == 1 or coins == 1:
                 deliveryCoin(s, aid, 1)
+                logging.info("投币视频aid{}".format(aid))
                 coins = coins - 1
             elif coins >= 2:
                 deliveryCoin(s, aid, 2)
+                logging.info("投币视频aid{}".format(aid))
                 coins = coins - 2
-            pass
-        pass
-    # 获取分区视频，之后判断投币，再然后判断是否投币，未投币则进行投币
-    pass
