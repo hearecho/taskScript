@@ -909,6 +909,15 @@
           "visit_id": "空"
         },
         "comment": "解封用户"
+      },
+      "Sliver2Coin": {
+        "url": "https://api.live.bilibili.com/pay/v1/Exchange/silver2coin",
+        "method": "POST",
+        "verify": true,
+        "params": {
+          "csrf_token": "bili_jct"
+        },
+        "comment": "银瓜子兑换硬币"
       }
     }
   },
