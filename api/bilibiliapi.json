@@ -584,7 +584,7 @@
         },
         "comment": "获取用户在哪一个分组"
       },
-      "": {
+      "dynamic_new": {
         "url": "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=?&type_list=8,512,4097,4098,4099,4100,4101",
         "method": "GET",
         "verify": true,
@@ -868,6 +868,16 @@
           "ptype": "16"
         },
         "comment": "获取房间直播流列表"
+      },
+      "bag_list": {
+        "url": "https://api.live.bilibili.com/xlive/web-room/v1/gift/bag_list?t=1602908576696&room_id=11454595",
+        "method": "GET",
+        "verify": true,
+        "params": {
+          "room_id": "房间号",
+          "t": "时间戳"
+        },
+        "comment": "获取直播包裹"
       }
     },
     "operate": {
@@ -915,6 +925,21 @@
         "method": "POST",
         "verify": true,
         "params": {
+          "csrf_token": "bili_jct"
+        },
+        "comment": "银瓜子兑换硬币"
+      },
+      "bag_send": {
+        "url": "https://api.live.bilibili.com/gift/v2/live/bag_send",
+        "method": "POST",
+        "verify": true,
+        "params": {
+          "uid": 6089090,
+          "gift_id": 30607,
+          "ruid": 50329485,
+          "gift_num": 1,
+          "bag_id": 221873830,
+          "biz_id": 11218604,
           "csrf_token": "bili_jct"
         },
         "comment": "银瓜子兑换硬币"
