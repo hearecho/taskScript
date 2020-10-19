@@ -942,7 +942,15 @@
           "biz_id": 11218604,
           "csrf_token": "bili_jct"
         },
-        "comment": "银瓜子兑换硬币"
+        "comment": "送礼物"
+      },
+      "": {
+        "url": "https://api.live.bilibili.com/xlive/web-ucenter/v1/sign/DoSign",
+        "method": "GET",
+        "verify": true,
+        "params": {
+        },
+        "comment": "直播签到"
       }
     }
   },

@@ -61,9 +61,18 @@ def sendWillExpireGift(s, room_info, bage_info):
             print(r.json())
     print("送出将过期礼物{}".format(count))
 
+def sign(s):
+    """
+    签到
+    :param s:
+    :return:
+    """
+    r = s.get("https://api.live.bilibili.com/xlive/web-ucenter/v1/sign/DoSign")
+    print(r.json())
 
 if __name__ == '__main__':
     s, api = init.init()
+    sign(s)
     room_info = getRoomInfo(s, 102)
     bag_info = getBagList(s, 102)
     sendWillExpireGift(s, room_info, bag_info)
