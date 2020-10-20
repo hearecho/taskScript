@@ -55,7 +55,7 @@ def sendWillExpireGift(s, room_info, bage_info):
         if (g["expire_at"] - t) / daySecond < 1:
             # 送出礼物
             data["gift_id"] = g["gift_id"]
-            data["gift_num"] = g["gitt_num"]
+            data["gift_num"] = g["gift_num"]
             data["bag_id"] = g["bag_id"]
             r = s.post("https://api.live.bilibili.com/gift/v2/live/bag_send", data=data)
             print(r.json())
