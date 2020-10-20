@@ -52,7 +52,7 @@ if __name__ == '__main__':
     s, api = init()
     coins = 5
     videolist = getVideoList(s)
-    logging.info("获取到videolist{}".format(videolist))
+    print("获取到videolist{}".format(videolist))
     while coins > 0:
         time.sleep(0.5)
         aid = choice(videolist)
@@ -61,9 +61,9 @@ if __name__ == '__main__':
             # 投币
             if deliveiedCoin == 1 or coins == 1:
                 deliveryCoin(s, aid, 1)
-                logging.info("投币视频aid{}".format(aid))
+                print("投币视频aid{}".format(aid))
                 coins = coins - 1
             elif coins >= 2:
                 deliveryCoin(s, aid, 2)
-                logging.info("投币视频aid{}".format(aid))
+                print("投币视频aid{}".format(aid))
                 coins = coins - 2
