@@ -58,6 +58,7 @@ def sendWillExpireGift(s, room_info, bage_info):
             data["gift_num"] = g["gift_num"]
             data["bag_id"] = g["bag_id"]
             r = s.post("https://api.live.bilibili.com/gift/v2/live/bag_send", data=data)
+            count += 1
             print(r.json())
     print("送出将过期礼物{}".format(count))
 
