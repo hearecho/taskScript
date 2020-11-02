@@ -74,6 +74,6 @@ def sign(s):
 if __name__ == '__main__':
     s, api = init.init()
     sign(s)
-    room_info = getRoomInfo(s, 102)
-    bag_info = getBagList(s, 102)
+    room_info = getRoomInfo(s, os.environ["ROOM_ID"])
+    bag_info = getBagList(s, os.environ["ROOM_ID"])
     sendWillExpireGift(s, room_info, bag_info)
