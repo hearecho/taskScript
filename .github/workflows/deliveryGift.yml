@@ -32,4 +32,5 @@ jobs:
           BILI_JCT: ${{ secrets.BILI_JCT }}
           SESSDATA: ${{ secrets.SESSDATA }}
           DEDEUSERID: ${{ secrets.DEDEUSERID }}
+          ROOM_ID: ${{ secrets.ROOM_ID }}
         run: python live.py
